@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surpresa Elegante 💖</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+  /* Corpo do site */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Neue', cursive;
+    background: url('fundo.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    color: #333;
+  }
+
+  .overlay {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(255,182,193,0.25);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ff6f91;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    margin: 0.2em 0;
+    text-align: center;
+  }
+
+  p.subtitle {
+    font-size: 1.5em;
+    color: #ff6f91;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    margin: 0.5em 0 1.5em 0;
+    text-align: center;
+  }
+
+  /* Botão Play */
+  #playButton {
+    font-size: 1.5em;
+    padding: 12px 25px;
+    background: #ff6f91;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff6f91, 0 0 25px #ff85a1, 0 0 40px #ffc0cb;
+    margin-bottom: 2em;
+    transition: transform 0.3s, box-shadow 0.5s;
+    animation: buttonGlow 2s infinite alternate;
+  }
+  #playButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff9fc3, 0 0 40px #ffc0cb, 0 0 60px #ffb6c1;
+  }
+  @keyframes buttonGlow {
+    0% { box-shadow: 0 0 15px #ff6f91, 0 0 25px #ff85a1, 0 0 40px #ffc0cb; }
+    100% { box-shadow: 0 0 25px #ff9fc3, 0 0 40px #ffc0cb, 0 0 60px #ffb6c1; }
+  }
+
+  /* Container flutuante para flores, personagens e pétalas */
+  .floating-elements {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* Flores */
+  .flower {
+    position: absolute;
+    width: 80px;
+    transition: transform 0.5s;
+  }
+  .flower:hover { transform: scale(1.3) rotate(5deg); }
+
+  /* Personagens */
+  .character {
+    position: absolute;
+    width: 120px;
+    transition: transform 0.5s, filter 0.5s, box-shadow 0.5s;
+  }
+  .character:hover {
+    transform: scale(1.4) rotate(5deg);
+    filter: drop-shadow(0 0 20px #ff9fc3);
+    box-shadow: 0 0 25px #ffb6c1;
+  }
+
+  /* Pétalas caindo */
+  .petal {
+    position: absolute;
+    font-size: 1.5em;
+    animation: fallPetal linear infinite;
+    pointer-events: none;
+  }
+  @keyframes fallPetal {
+    0% { transform: translateY(-50px) rotate(0deg); opacity:0; }
+    10% { opacity:1; }
+    100% { transform: translateY(700px) rotate(360deg); opacity:0.8; }
+  }
+
+  /* Painel de mensagens fixo e fofo */
+  .message-panel {
+    position: fixed;
+    top: 20%;
+    left: 5%;
+    width: 320px;
+    background: rgba(255,182,193,0.5);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255,182,193,0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* espaço entre as mensagens */
+  }
+
+  .message-panel p {
+    font-size: 1.3em;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    margin: 0;
+  }
+
+  audio { display:none; }
+</style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<h1>Oi! 😳</h1>
+<p class="subtitle">Essa surpresa é só pra você 💖</p>
+
+<button id="playButton">▶️ Play</button>
+
+<!-- Container de elementos flutuantes -->
+<div class="floating-elements">
+  <!-- Flores -->
+  <img src="flor1.png" class="flower" style="top:70%; left:10%;">
+  <img src="flor2.png" class="flower" style="top:75%; left:50%;">
+  <img src="flor3.png" class="flower" style="top:72%; left:80%;">
+
+  <!-- Personagens -->
+  <img src="gojo.png" class="character" style="top:30%; left:75%;">
+  <img src="levi.png" class="character" style="top:40%; left:80%;">
+  <img src="itachi.png" class="character" style="top:35%; left:70%;">
+
+  <!-- Pétalas -->
+  <div class="petal" style="left:5%; animation-duration:12s;">🌸</div>
+  <div class="petal" style="left:25%; animation-duration:14s;">🌸</div>
+  <div class="petal" style="left:45%; animation-duration:16s;">🌸</div>
+  <div class="petal" style="left:65%; animation-duration:13s;">🌸</div>
+  <div class="petal" style="left:85%; animation-duration:15s;">🌸</div>
+</div>
+
+<!-- Painel de mensagens fixo -->
+<div class="message-panel">
+  <p>💖 Você é incrível ✨</p>
+  <p>🌸 Não consigo parar de pensar em você 💖</p>
+  <p>💌 Espero que goste dessa surpresa 🌸</p>
+</div>
+
+<!-- Música -->
+<audio id="bgMusic">
+  <source src="rap_zoro.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const playButton = document.getElementById('playButton');
+const bgMusic = document.getElementById('bgMusic');
+
+playButton.addEventListener('click', () => {
+  if(bgMusic.paused){
+    bgMusic.play();
+    playButton.textContent="⏸️ Pause";
+  }else{
+    bgMusic.pause();
+    playButton.textContent="▶️ Play";
+  }
+});
+</script>
+
+</body>
+</html>
